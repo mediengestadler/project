@@ -1,0 +1,7 @@
+@mixin expander($position: absolute, $space: 0) {
+    position: $position;
+    top: $space;
+    right: $space;
+    bottom: $space;
+    left: $space;
+}

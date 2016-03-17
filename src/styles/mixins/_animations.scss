@@ -1,0 +1,65 @@
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content; 
+    }
+
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    } 
+}
+
+@mixin fade($on: '&:hover', $visible: true) {
+    $opacity: 1;
+    $visibility: visible;
+    $toggledOpacity: 0;
+    $toggledVisibility: hidden;
+
+    @if $visible != true {
+        $opacity: 0;
+        $visibility: hidden;
+        $toggledOpacity: 1;
+        $toggledVisibility: visible;
+    }
+
+    opacity: $opacity;
+    visibility: $visibility;
+    transition: opacity $transition, visibility $transition;
+
+    #{$on} {
+        opacity: $toggledOpacity;
+        visibility: $toggledVisibility;
+    }
+}
+
+@mixin slide($max: 100px, $on: '&:hover', $visible: true) {
+    @if function-exists(rem-calc) {
+        $max: rem-calc($max);
+    }
+
+    $height: $max;
+    $toggledHeight: 0;
+
+    @if $visible != true {
+        $height: 0;
+        $toggledHeight: $max;
+    }
+
+    max: {
+        height: $height;
+    }
+    overflow: hidden;
+
+    #{$on} {
+        max: {
+            height: $toggledHeight;
+        }
+    }
+}

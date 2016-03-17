@@ -1,0 +1,128 @@
+$file-type-of-parent: true !default;
+$file-type-attribute: href !default;
+
+@if not ($file-type-of-parent == false or $file-type-of-parent == true) {
+    @warn "$file-type-of-parent expected to be true or false. Got #{$file-type-of-parent} instead.";
+}
+
+$file-type-qm: "";
+@if $file-type-of-parent {
+    $file-type-qm: "&";
+}
+
+@mixin file-type-pdf($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".pdf"], #{$file-type-qm}[#{$attribute}*=".PDF"] {
+        @content;
+    }
+}
+
+@mixin file-type-text($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".txt"], #{$file-type-qm}[#{$attribute}*=".TXT"],
+    #{$file-type-qm}[#{$attribute}*=".doc"], #{$file-type-qm}[#{$attribute}*=".DOC"],
+    #{$file-type-qm}[#{$attribute}*=".docx"], #{$file-type-qm}[#{$attribute}*=".DOCX"],
+    #{$file-type-qm}[#{$attribute}*=".odt"], #{$file-type-qm}[#{$attribute}*=".ODT"],
+    #{$file-type-qm}[#{$attribute}*=".pages"], #{$file-type-qm}[#{$attribute}*=".PAGES"] {
+        @content;
+    }
+}
+
+@mixin file-type-table($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".xls"], #{$file-type-qm}[#{$attribute}*=".XLS"],
+    #{$file-type-qm}[#{$attribute}*=".xlsx"], #{$file-type-qm}[#{$attribute}*=".XLSX"],
+    #{$file-type-qm}[#{$attribute}*=".ods"], #{$file-type-qm}[#{$attribute}*=".ODS"],
+    #{$file-type-qm}[#{$attribute}*=".numbers"], #{$file-type-qm}[#{$attribute}*=".NUMBERS"] {
+        @content;
+    }
+}
+
+@mixin file-type-image($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".jpg"], #{$file-type-qm}[#{$attribute}*=".JPG"],
+    #{$file-type-qm}[#{$attribute}*=".jpeg"], #{$file-type-qm}[#{$attribute}*=".JPEG"],
+    #{$file-type-qm}[#{$attribute}*=".png"], #{$file-type-qm}[#{$attribute}*=".PNG"],
+    #{$file-type-qm}[#{$attribute}*=".bmp"], #{$file-type-qm}[#{$attribute}*=".BMP"],
+    #{$file-type-qm}[#{$attribute}*=".eps"], #{$file-type-qm}[#{$attribute}*=".EPS"],
+    #{$file-type-qm}[#{$attribute}*=".gif"], #{$file-type-qm}[#{$attribute}*=".GIF"],
+    #{$file-type-qm}[#{$attribute}*=".tif"], #{$file-type-qm}[#{$attribute}*=".TIF"],
+    #{$file-type-qm}[#{$attribute}*=".tiff"], #{$file-type-qm}[#{$attribute}*=".TIFF"],
+    #{$file-type-qm}[#{$attribute}*=".raw"], #{$file-type-qm}[#{$attribute}*=".RAW"],
+    #{$file-type-qm}[#{$attribute}*=".odg"], #{$file-type-qm}[#{$attribute}*=".ODG"] {
+        @content;
+    }
+}
+
+@mixin file-type-video($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".mp4"], #{$file-type-qm}[#{$attribute}*=".MP4"],
+    #{$file-type-qm}[#{$attribute}*=".avi"], #{$file-type-qm}[#{$attribute}*=".AVI"],
+    #{$file-type-qm}[#{$attribute}*=".wmv"], #{$file-type-qm}[#{$attribute}*=".WMV"],
+    #{$file-type-qm}[#{$attribute}*=".mpg"], #{$file-type-qm}[#{$attribute}*=".MPG"],
+    #{$file-type-qm}[#{$attribute}*=".mpeg"], #{$file-type-qm}[#{$attribute}*=".MPEG"],
+    #{$file-type-qm}[#{$attribute}*=".ogv"], #{$file-type-qm}[#{$attribute}*=".OGV"],
+    #{$file-type-qm}[#{$attribute}*=".webm"], #{$file-type-qm}[#{$attribute}*=".WEBM"],
+    #{$file-type-qm}[#{$attribute}*=".mov"], #{$file-type-qm}[#{$attribute}*=".MOV"],
+    #{$file-type-qm}[#{$attribute}*=".swf"], #{$file-type-qm}[#{$attribute}*=".SWF"],
+    #{$file-type-qm}[#{$attribute}*=".flv"], #{$file-type-qm}[#{$attribute}*=".FLV"],
+    #{$file-type-qm}[#{$attribute}*=".wmf"], #{$file-type-qm}[#{$attribute}*=".WMF"],
+    #{$file-type-qm}[#{$attribute}*=".m4v"], #{$file-type-qm}[#{$attribute}*="youtube"],
+    #{$file-type-qm}[#{$attribute}*="vimeo"], #{$file-type-qm}[#{$attribute}*="myvideo"] {
+        @content;
+    }
+}
+
+@mixin file-type-music($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".mp3"], #{$file-type-qm}[#{$attribute}*=".MP3"],
+    #{$file-type-qm}[#{$attribute}*=".wav"], #{$file-type-qm}[#{$attribute}*=".WAV"],
+    #{$file-type-qm}[#{$attribute}*=".wma"], #{$file-type-qm}[#{$attribute}*=".WMA"],
+    #{$file-type-qm}[#{$attribute}*=".m4a"], #{$file-type-qm}[#{$attribute}*=".M4A"],
+    #{$file-type-qm}[#{$attribute}*=".au"], #{$file-type-qm}[#{$attribute}*=".AU"] {
+        @content;
+    }
+}
+
+@mixin file-type-zip($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".zip"], #{$file-type-qm}[#{$attribute}*=".ZIP"],
+    #{$file-type-qm}[#{$attribute}*=".rar"], #{$file-type-qm}[#{$attribute}*=".RAR"],
+    #{$file-type-qm}[#{$attribute}*=".gz"], #{$file-type-qm}[#{$attribute}*=".GZ"],
+    #{$file-type-qm}[#{$attribute}*=".tgz"], #{$file-type-qm}[#{$attribute}*=".TGZ"] {
+        @content;
+    }
+}
+
+@mixin file-type-presentation($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".ppt"], #{$file-type-qm}[#{$attribute}*=".PPT"],
+    #{$file-type-qm}[#{$attribute}*=".pptx"], #{$file-type-qm}[#{$attribute}*=".PPTX"],
+    #{$file-type-qm}[#{$attribute}*=".pps"], #{$file-type-qm}[#{$attribute}*=".PPS"],
+    #{$file-type-qm}[#{$attribute}*=".ppsx"], #{$file-type-qm}[#{$attribute}*=".PPSX"],
+    #{$file-type-qm}[#{$attribute}*=".odp"], #{$file-type-qm}[#{$attribute}*=".ODP"],
+    #{$file-type-qm}[#{$attribute}*=".key"], #{$file-type-qm}[#{$attribute}*=".KEY"] {
+        @content;
+    }
+}
+
+@mixin file-type-application($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".exe"], #{$file-type-qm}[#{$attribute}*=".EXE"],
+    #{$file-type-qm}[#{$attribute}*=".ini"], #{$file-type-qm}[#{$attribute}*=".INI"],
+    #{$file-type-qm}[#{$attribute}*=".scr"], #{$file-type-qm}[#{$attribute}*=".SCR"] {
+        @content;
+    }
+}
+
+@mixin file-type-font($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".ttf"], #{$file-type-qm}[#{$attribute}*=".TTF"],
+    #{$file-type-qm}[#{$attribute}*=".otf"], #{$file-type-qm}[#{$attribute}*=".OTF"] {
+        @content;
+    }
+}
+
+@mixin file-type-date($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".ics"], #{$file-type-qm}[#{$attribute}*=".ICS"],
+    #{$file-type-qm}[#{$attribute}*=".iCal"] {
+        @content;
+    }
+}
+
+@mixin file-type-contact($attribute: $file-type-attribute) {
+    #{$file-type-qm}[#{$attribute}*=".vcf"], #{$file-type-qm}[#{$attribute}*=".VCF"],
+    #{$file-type-qm}[#{$attribute}*=".otf"], #{$file-type-qm}[#{$attribute}*=".OTF"] {
+        @content;
+    }
+}

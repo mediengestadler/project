@@ -1,0 +1,158 @@
+@function breakpoint($val: small) {
+  $bp: nth($val, 1);
+  $bp-max: 0;
+  $dir: if(length($val) > 1, nth($val, 2), up);
+  $str: '';
+  $named: false;
+
+  @if $bp == 'landscape' or $bp == 'portrait' {
+    @return '(orientation: #{$bp})';
+  }
+  @else if $bp == 'retina' {
+    @return '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+  }
+
+  @if type-of($bp) == 'string' {
+    @if map-has-key($breakpoints, $bp) {
+      @if $dir == 'only' or $dir == 'down' {
+        $bp-max: -zf-map-next($breakpoints, $bp);
+      }
+
+      $bp: map-get($breakpoints, $bp);
+      $named: true;
+    }
+    @else {
+      $bp: 0;
+    }
+  }
+
+  $bp: -zf-bp-to-em($bp);
+  @if $bp-max {
+    $bp-max: -zf-bp-to-em($bp-max) - (1/16);
+  }
+
+  @if $bp > 0em or $dir == 'only' or $dir == 'down' {
+    @if $dir == 'only' {
+      @if $named == true {
+        @if $bp > 0em {
+          $str: $str + '(min-width: #{$bp})';
+
+          @if $bp-max != null {
+            $str: $str + ' and ';
+          }
+        }
+
+        @if $bp-max != null {
+          $str: $str + '(max-width: #{$bp-max})';
+        }
+      }
+    }
+
+    @else if $dir == 'down' {
+      $max: if($named, $bp-max, $bp);
+
+      @if $named or $bp > 0em {
+        @if $max != null {
+          $str: $str + '(max-width: #{$max})';
+        }
+      }
+    }
+
+    @else if $bp > 0em {
+      $str: $str + '(min-width: #{$bp})';
+    }
+  }
+
+  @return $str;
+}
+
+@mixin breakpoint($value) {
+  $str: breakpoint($value);
+
+  @if $str == '' {
+    @content;
+  }
+
+  @else {
+    @media screen and #{$str} {
+      @content;
+    }
+  }
+}
+
+@mixin breakpoints-for-javascript ($breakpoints: $breakpoints) {
+    &:before {
+        @include invisible;
+
+        @each $key, $value in $breakpoints {
+            $str: breakpoint($key);
+
+            @if $str == '' {
+                content: "#{$key}";
+            } @else {
+                @media screen and #{$str} {
+                    content: "#{$key}";
+                }
+            }
+        }
+    }
+}
+
+@function -zf-bp-serialize($map) {
+  $str: '';
+  @each $key, $value in $map {
+    $str: $str + $key + '=' + -zf-bp-to-em($value) + '&';
+  }
+  $str: str-slice($str, 1, -2);
+
+  @return $str;
+}
+
+@function -zf-map-next($map, $key) {
+  $values: map-values($map);
+
+  $i: 1;
+  $found: false;
+  @each $val in map-keys($map) {
+    @if $found == false {
+      @if ($key == $val) {
+        $found: true;
+      }
+      $i: $i + 1;
+    }
+  }
+
+  @if $i > length($map) {
+    @return null;
+  }
+  @else {
+    @return nth($values, $i);
+  }
+}
+
+@function -zf-get-bp-val($map, $value) {
+  @if not map-has-key($breakpoints, $value) {
+    @return null;
+  }
+  @else if map-has-key($map, $value) {
+    // If it does, just return the value
+    @return map-get($map, $value);
+  }
+  @else {
+    $anchor: null;
+    $found: false;
+
+    @each $key, $val in $breakpoints {
+      @if not $found {
+        @if map-has-key($map, $key) {
+          $anchor: $key;
+        }
+        @if $key == $value {
+          $found: true;
+        }
+      }
+    }
+
+    @return map-get($map, $anchor);
+  }
+}

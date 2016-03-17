@@ -1,0 +1,11 @@
+%img {
+
+}
+
+img {
+    @extend %img !optional;
+}
+
+%reset-img {
+
+}

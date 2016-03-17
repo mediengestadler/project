@@ -1,0 +1,39 @@
+html {
+    box-sizing: border-box;
+    hyphens: auto;
+    font: {
+        size: 100% / 16 * strip-unit($global-font-size);
+        family: $primary-font-family;
+    }
+    line: {
+        height: 1.5;
+    }
+    @include breakpoints-for-javascript;
+}
+
+%border-box {
+    box: {
+        sizing: inherit;
+    }
+}
+
+* {
+    @extend %border-box;
+
+    &:before, 
+    &:after {
+        @extend %border-box;
+    }
+
+    &:first-child {
+        margin: {
+            top: 0 !important;
+        }
+    }
+
+    &:last-child {
+        margin: {
+            bottom: 0 !important;
+        }
+    }
+}

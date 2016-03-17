@@ -1,0 +1,34 @@
+@mixin placeholder($hide-on-focus: false) {
+    &.placeholder {
+        @content;
+    }
+    &::-webkit-input-placeholder{
+        @content;
+    }
+    &:-moz-placeholder{
+        @content;
+    }
+    &::-moz-placeholder{
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+
+    @if ($hide-on-focus) {
+        &:focus {
+            &::-webkit-input-placeholder{
+                @include opacity(0);
+            }
+            &:-moz-placeholder{
+                @include opacity(0);
+            }
+            &::-moz-placeholder{
+                @include opacity(0);
+            }
+            &:-ms-input-placeholder {
+                @include opacity(0);
+            }
+        }
+    }
+}

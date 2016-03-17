@@ -1,0 +1,10 @@
+@mixin single-line {
+    hyphens: none;
+    overflow: hidden;
+    text: {
+        overflow: ellipsis;
+    }
+    white: {
+        space: nowrap;
+    }
+}

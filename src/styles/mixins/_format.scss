@@ -1,0 +1,18 @@
+@mixin format($x, $y, $from: bottom, $height: 100%, $onresize: false, $child: '> *') {
+    padding: {
+        bottom: 100% / $x * $y;
+    }
+
+    @if $onresize == false {
+        display: block;
+        position: relative;
+
+        #{$child} {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: $height;
+            #{$from}: 0;
+        }
+    }
+}

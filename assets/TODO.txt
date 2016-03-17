@@ -1,0 +1,37 @@
+PROJEKT CHECKLIST
+
+[ ] package.json & bower.json konfigurieren
+[ ] _config.php konfigurieren
+[ ] Header konfigurieren
+[ ] Google Tag Manager integrieren
+[ ] Google Webmaster Tools integrieren
+[ ] Caching konfigurieren
+[ ] sitemap.xml konfigurieren
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ]
+[ ] PageSpeed checken
+
+
+
+
+
+IN PROJEKT NOCH ZU INTEGRIEREN
+
+- default htaccess
+- JS in ES6
+- Gruntfile um Image minifier erweitern + Babel integration

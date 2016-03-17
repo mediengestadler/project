@@ -1,0 +1,5 @@
+@mixin index ($index, $z-index: $z-index) {
+    z: {
+        index: index($z-index, $index);
+    }
+}

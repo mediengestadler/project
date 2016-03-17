@@ -1,0 +1,143 @@
+@import "fontawesome/scss/font-awesome";
+
+$fa-css-prefix: 'icon';
+$fa-font-path: $iconfont;
+
+@mixin iconfont(
+    $icon,
+    $font-size: $global-font-size,
+    $color: false,
+    $center: false, 
+    $padding-top: false, $padding-right: false, $padding-bottom: false, $padding-left: false,
+    $margin-top: false, $margin-right: false, $margin-bottom: false, $margin-left: false,
+    $top: false, $right: false, $bottom: false, $left: false,
+    $position: false
+) {
+    @if function-exists(rem-calc) {
+        @if $padding-top != false {
+            $padding-top: rem-calc($padding-top);
+        }
+        @if $padding-right != false {
+            $padding-right: rem-calc($padding-right);
+        }
+        @if $padding-bottom != false {
+            $padding-bottom: rem-calc($padding-bottom);
+        }
+        @if $padding-left != false {
+            $padding-left: rem-calc($padding-left);
+        }
+        @if $margin-top != false {
+            $margin-top: rem-calc($margin-top); 
+        }
+        @if $margin-right != false {
+            $margin-right: rem-calc($margin-right);
+        }
+        @if $margin-bottom != false {
+            $margin-bottom: rem-calc($margin-bottom);
+        }
+        @if $margin-left != false {
+            $margin-left: rem-calc($margin-left);
+        }
+        @if $top != false {
+            $top: rem-calc($top); 
+        }
+        @if $right != false {
+            $right: rem-calc($right);
+        }
+        @if $bottom != false {
+            $bottom: rem-calc($bottom);
+        }
+        @if $left != false {
+            $left: rem-calc($left);
+        }
+        @if $font-size != false {
+            $font-size: rem-calc($font-size);
+        }
+    }
+
+    &:before {
+        @include fa-icon;
+        content: $icon;
+        font: {
+            size: $font-size;
+        }
+
+        @if $color != false {
+            color: $color;
+        }
+
+        @if $top != false {
+            top: $top;
+        }
+
+        @if $right != false {
+            right: $right;
+        }
+
+        @if $bottom != false {
+            bottom: $bottom;
+        }
+
+        @if $left != false {
+            left: $left;
+        }
+
+        @if $top != false or $right != false or $bottom != false or $left != false {
+            position: absolute;
+        }
+
+        @if $center == false {
+            @if $margin-top != false {
+                margin-top: $margin-top;
+            }
+
+            @if $margin-right != false {
+                margin-right: $margin-right;
+            }
+
+            @if $margin-bottom != false {
+                margin-bottom: $margin-bottom;
+            }
+
+            @if $margin-left != false {
+                margin-left: $margin-left;
+            }
+        } @else {
+            @if $center == true {
+                @include center;
+            }
+
+            @if $center == 'horizontal' {
+                @include center-horizontal;
+            }
+
+            @if $center == vertical {
+                @include center-vertical;
+            }
+        }
+    }
+
+    @if $top != false or $right != false or $bottom != false or $left != false {
+        @if $position == false {
+            $position: relative;
+        }
+
+        position: $position;
+    }
+
+    @if $padding-top != false {
+        padding-top: $padding-top;
+    }
+
+    @if $padding-right != false {
+        padding-right: $padding-right;
+    }
+
+    @if $padding-bottom != false {
+        padding-bottom: $padding-bottom;
+    }
+
+    @if $padding-left != false {
+        padding-left: $padding-left;
+    }
+}

@@ -1,0 +1,32 @@
+.svg {
+    @include invisible;
+}
+
+html, body {
+
+}
+
+
+.outer {
+
+}
+
+.head {
+
+}
+
+.logo {
+    @extend %reset-a;
+}
+
+.nav-top {
+
+}
+
+.main {
+
+}
+
+.foot {
+
+}

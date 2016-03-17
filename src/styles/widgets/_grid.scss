@@ -1,0 +1,8 @@
+.wrap {
+    @include grid-row();
+
+    > div {
+        @include grid-column(12);
+        position: relative;
+    }
+}

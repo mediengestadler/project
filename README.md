@@ -1,1 +1,3 @@
-# project
+# DEFAULT PROJEKT STRUKTUR AUFBAU
+
+z.Z. in Entwicklung

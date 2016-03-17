@@ -1,0 +1,48 @@
+input,
+textarea,
+select {
+    &[readonly],
+    &[disabled] {
+
+    }
+
+    &:hover {
+
+    }
+
+    &:focus {
+
+    }
+
+    &[type="checkbox"] {
+        + span {
+
+        }
+
+        &:checked {
+            + span {
+
+            }
+        }
+    }
+
+    &[type="radio"] {
+        + span {
+
+        }
+
+        &:checked {
+            + span {
+
+            }
+        }
+    }
+}
+
+select {
+
+}
+
+textarea {
+
+}
