@@ -8,3 +8,4 @@ Icon?
 node_modules
 build
 !build/.gitkeep
+!server/public/build
