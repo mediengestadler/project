@@ -6,4 +6,5 @@
 .Trashes
 Icon?
 node_modules
-build
+build/*
+!build/.gitkeep
