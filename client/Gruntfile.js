@@ -49,7 +49,7 @@ module.exports = function (grunt) {
             options: {
                 sourceMap: false,
                 outputStyle: 'compressed',
-                sourceComments: true,
+                sourceComments: false,
                 includePaths: [
                     'node_modules/'
                 ]
@@ -88,12 +88,12 @@ module.exports = function (grunt) {
         uglify: {
             build: {
                 files: {
-                    'build/scripts/main.min.js': 'build/scripts/main.js'
+                    'build/scripts/main.js': 'build/scripts/main.js'
                 }
             }
         },
         concat: {
-            build: {
+            js: {
                 options: {
                     banner: '/*!**********************************************************************************\n' +
                             ' * Package: <%= pkg.name %>\n' +
@@ -107,6 +107,21 @@ module.exports = function (grunt) {
                 },
                 src: ['build/scripts/main.js'],
                 dest: 'build/scripts/main.js'
+            },
+            css: {
+                options: {
+                    banner: '/*!**********************************************************************************\n' +
+                            ' * Package: <%= pkg.name %>\n' +
+                            ' * Version: v<%= pkg.version %>\n' +
+                            ' * Built  : <%= Date() %>\n' +
+                            ' * Authors: <%= _.map(pkg.authors, function (author) { return author.name + " " + "(" + author.email + ")";}).join(",") %>\n' +
+                            ' * \n' +
+                            ' * Copyright © <%= new Date().getFullYear() %> Mediengestadler\n' +
+                            ' ***********************************************************************************/\n',
+                    separator: ';'
+                },
+                src: ['build/styles/app.css'],
+                dest: 'build/styles/app.css'
             }
         }
     });

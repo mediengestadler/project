@@ -37,3 +37,5 @@ IN PROJEKT NOCH ZU INTEGRIEREN
 - Gruntfile um Image minifier erweitern + Babel integration
 - dns prefetch
 - http://pep.briangonzalez.org/
+- Grunt export Task (+ grunt default) + HTML Minifier
+- Grunt deploy task (+ grunt export) für js, css, img, all
