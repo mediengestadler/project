@@ -1,4 +1,4 @@
-@import "fontawesome/scss/font-awesome";
+@import "font-awesome/scss/font-awesome";
 
 $fa-css-prefix: 'icon';
 $fa-font-path: $iconfont;
@@ -7,7 +7,7 @@ $fa-font-path: $iconfont;
     $icon,
     $font-size: $global-font-size,
     $color: false,
-    $center: false, 
+    $center: false,
     $padding-top: false, $padding-right: false, $padding-bottom: false, $padding-left: false,
     $margin-top: false, $margin-right: false, $margin-bottom: false, $margin-left: false,
     $top: false, $right: false, $bottom: false, $left: false,
@@ -27,7 +27,7 @@ $fa-font-path: $iconfont;
             $padding-left: rem-calc($padding-left);
         }
         @if $margin-top != false {
-            $margin-top: rem-calc($margin-top); 
+            $margin-top: rem-calc($margin-top);
         }
         @if $margin-right != false {
             $margin-right: rem-calc($margin-right);
@@ -39,7 +39,7 @@ $fa-font-path: $iconfont;
             $margin-left: rem-calc($margin-left);
         }
         @if $top != false {
-            $top: rem-calc($top); 
+            $top: rem-calc($top);
         }
         @if $right != false {
             $right: rem-calc($right);

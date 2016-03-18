@@ -20,10 +20,10 @@
 
                 <nav class="nav-top">
                     <ul>
-                        <li><a href=""></a></li>
-                        <li><a href=""></a></li>
-                        <li><a href=""></a></li>
-                        <li><a href=""></a></li>
+                        <li><a href="#">Lorem</a></li>
+                        <li><a href="#">Ipsum</a></li>
+                        <li><a href="#">Dolor</a></li>
+                        <li><a href="#">Consetectur</a></li>
                     </ul>
                 </nav>
             </div>

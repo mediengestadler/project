@@ -5,14 +5,6 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: pkg,
-        githooks: {
-            init: {
-                options: {
-                    dest: '../../.git/hooks'
-                },
-                'pre-commit': 'eslint'
-            }
-        },
         watch: {
             styles: {
                 files: [
@@ -35,13 +27,31 @@ module.exports = function (grunt) {
                 }
             }
         },
+        copy: {
+            build: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'node_modules/font-awesome/',
+                        src: ['fonts/*'],
+                        dest: 'build/media/',
+                    },
+                    {
+                        expand: true,
+                        cwd: 'src/',
+                        src: ['media/*', 'media/**/*'],
+                        dest: 'build/',
+                    }
+                ]
+            }
+        },
         sass: {
             options: {
                 sourceMap: false,
                 outputStyle: 'compressed',
                 sourceComments: true,
                 includePaths: [
-                    'bower_components/'
+                    'node_modules/'
                 ]
             },
             build: {
@@ -98,24 +108,6 @@ module.exports = function (grunt) {
                 src: ['build/scripts/main.js'],
                 dest: 'build/scripts/main.js'
             }
-        },
-        copy: {
-            build: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: './bower_components/fontawesome/',
-                        src: ['fonts/*'],
-                        dest: 'build/media/',
-                    },
-                    {
-                        expand: true,
-                        cwd: 'src/',
-                        src: ['media/*', 'media/**/*'],
-                        dest: 'build/',
-                    }
-                ]
-            }
         }
     });
 
@@ -131,11 +123,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask('default', [
+        'copy',
         'sass',
         'postcss',
         'browserify',
         'uglify',
-        'concat',
-        'copy',
+        'concat'
     ]);
 };
