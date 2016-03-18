@@ -35,3 +35,4 @@ IN PROJEKT NOCH ZU INTEGRIEREN
 - default htaccess
 - JS in ES6
 - Gruntfile um Image minifier erweitern + Babel integration
+- dns prefetch

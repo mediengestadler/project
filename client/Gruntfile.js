@@ -16,8 +16,8 @@ module.exports = function (grunt) {
         watch: {
             styles: {
                 files: [
-                    '../../src/styles/*.scss',
-                    '../../src/styles/**/*.scss'
+                    'src/styles/*.scss',
+                    'src/styles/**/*.scss'
                 ],
                 tasks: ['sass'],
                 options: {
@@ -26,8 +26,8 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: [
-                    '../../src/scripts/*.js',
-                    '../../src/scripts/**/*.js'
+                    'src/scripts/*.js',
+                    'src/scripts/**/*.js'
                 ],
                 tasks: ['browserify'],
                 options: {
@@ -46,7 +46,7 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    '../../build/styles/app.css': '../../src/styles/app.scss'
+                    'build/styles/app.css': 'src/styles/app.scss'
                 }
             }
         },
@@ -59,7 +59,7 @@ module.exports = function (grunt) {
                 ]
             },
             build: {
-                src: '../../build/styles/app.css'
+                src: 'build/styles/app.css'
             }
         },
         browserify: {
@@ -71,14 +71,14 @@ module.exports = function (grunt) {
                         ]
                     ]
                 },
-                src: '../../src/scripts/main.js',
-                dest: '../../build/scripts/main.js'
+                src: 'src/scripts/main.js',
+                dest: 'build/scripts/main.js'
             }
         },
         uglify: {
             build: {
                 files: {
-                    '../../build/scripts/main.min.js': '../../build/scripts/main.js'
+                    'build/scripts/main.min.js': 'build/scripts/main.js'
                 }
             }
         },
@@ -95,8 +95,8 @@ module.exports = function (grunt) {
                             ' ***********************************************************************************/\n',
                     separator: ';'
                 },
-                src: ['../../build/scripts/main.js'],
-                dest: '../../build/scripts/main.js'
+                src: ['build/scripts/main.js'],
+                dest: 'build/scripts/main.js'
             }
         },
         copy: {
@@ -106,13 +106,13 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: './bower_components/fontawesome/',
                         src: ['fonts/*'],
-                        dest: '../../build/media/',
+                        dest: 'build/media/',
                     },
                     {
                         expand: true,
-                        cwd: '../../src/',
+                        cwd: 'src/',
                         src: ['media/*', 'media/**/*'],
-                        dest: '../../build/',
+                        dest: 'build/',
                     }
                 ]
             }
