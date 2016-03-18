@@ -5,9 +5,5 @@
 .Spotlight-V100
 .Trashes
 Icon?
-
-# SASS/SCSS cache
-.sass-cache
-bower_components
 node_modules
 build
