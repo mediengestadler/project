@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="<?php echo URL . PATH; ?>media/touch-icon.png">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700,800|Shadows+Into+Light+Two" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" media="all" href="<?php echo URL; ?>build/styles/app.css">
+    <link rel="stylesheet" media="all" href="<?php echo URL . PATH; ?>styles/app.css">
 
     <?php /* <link rel="alternate" hreflang="es" href="http://es.example.com/" />*/ ?>
 

@@ -1,29 +1,18 @@
 module.exports = function (grunt) {
     "use strict";
-    var pkg= grunt.file.readJSON('package.json');
+
+    var pkg = grunt.file.readJSON('package.json');
+
     grunt.initConfig({
         pkg: pkg,
-
-        jshint: {
-            files: [
-                'Gruntfile.js',
-                '../../src/scripts/widgets/*.js',
-                '../../src/scripts/*.js'
-            ],
-            options: {
-                jshintrc: ".jshintrc"
-            }
-        },
-
         githooks: {
             init: {
                 options: {
                     dest: '../../.git/hooks'
                 },
-                'pre-commit': 'jshint'
+                'pre-commit': 'eslint'
             }
         },
-
         watch: {
             styles: {
                 files: [
@@ -40,13 +29,12 @@ module.exports = function (grunt) {
                     '../../src/scripts/*.js',
                     '../../src/scripts/**/*.js'
                 ],
-                tasks: ['sass'],
+                tasks: ['browserify'],
                 options: {
                     spawn: false
                 }
             }
         },
-
         sass: {
             options: {
                 sourceMap: false,
@@ -62,7 +50,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
         postcss: {
             options: {
                 processors: [
@@ -75,7 +62,26 @@ module.exports = function (grunt) {
                 src: '../../build/styles/app.css'
             }
         },
-
+        browserify: {
+            build: {
+                options: {
+                    transform: [
+                        [
+                            'babelify'
+                        ]
+                    ]
+                },
+                src: '../../src/scripts/main.js',
+                dest: '../../build/scripts/main.js'
+            }
+        },
+        uglify: {
+            build: {
+                files: {
+                    '../../build/scripts/main.min.js': '../../build/scripts/main.js'
+                }
+            }
+        },
         concat: {
             build: {
                 options: {
@@ -93,7 +99,6 @@ module.exports = function (grunt) {
                 dest: '../../build/scripts/main.js'
             }
         },
-
         copy: {
             build: {
                 files: [
@@ -101,34 +106,36 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: './bower_components/fontawesome/',
                         src: ['fonts/*'],
-                        dest: '../../public/build/media/',
+                        dest: '../../build/media/',
                     },
                     {
                         expand: true,
                         cwd: '../../src/',
                         src: ['media/*', 'media/**/*'],
-                        dest: '../../public/build/',
+                        dest: '../../build/',
                     }
                 ]
             }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-githooks');
-
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-postcss');
 
+    grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+
+    grunt.loadNpmTasks('grunt-contrib-copy');
+
     grunt.registerTask('default', [
-        'jshint',
-        'requirejs',
+        'sass',
+        'postcss',
+        'browserify',
+        'uglify',
         'concat',
         'copy',
-        'sass',
-        'postcss'
     ]);
 };

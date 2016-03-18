@@ -1,22 +1,15 @@
-define([
-    'emtoolsjs',
-    'lodash'
-], function (
-    emtoolsjs,
-    _
-) {
-    'use strict';
+import { Widget } from 'emtoolsjs';
 
-    var Widget = emtoolsjs.Widget.extend({
-        defaultOptions: function () {
-            return {
-                id: 'Application'
-            };
-        },
-        bootstrap: function () {
+export class Application extends Widget {
+    defaultOptions () {
+        return {
+            id: 'Application'
+        };
+    }
+    bootstrap () {
 
-        }
-    });
+    }
+    addListeners () {
 
-    return Widget;
-});
+    }
+}
