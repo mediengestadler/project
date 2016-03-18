@@ -1,7 +1,5 @@
 # MGF
-*z.Z. in Entwicklung*
-
-MGF ist ein Framework für das schnellere entwickeln von Websites.
+**z.Z. in Entwicklung** - MGF ist ein Framework für das schnellere entwickeln von Websites.
 
 Features
 ----------------
