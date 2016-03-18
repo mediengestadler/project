@@ -24,6 +24,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700,800|Shadows+Into+Light+Two" rel="stylesheet" type="text/css">
     <link rel="stylesheet" media="all" href="<?php echo URL . PATH; ?>styles/app.css">
 
+    <link rel="dns-prefetch" href="//ajax.googleapis.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+
     <?php /* <link rel="alternate" hreflang="es" href="http://es.example.com/" />*/ ?>
 
     <script>

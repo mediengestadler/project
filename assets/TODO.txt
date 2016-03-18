@@ -36,3 +36,4 @@ IN PROJEKT NOCH ZU INTEGRIEREN
 - JS in ES6
 - Gruntfile um Image minifier erweitern + Babel integration
 - dns prefetch
+- http://pep.briangonzalez.org/
