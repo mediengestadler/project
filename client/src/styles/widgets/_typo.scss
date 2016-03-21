@@ -52,11 +52,17 @@ p {
 }
 
 %reset-p {
-
+    margin: {
+        top: 0;
+        bottom: 0;
+    }
 }
 
 %h {
-
+    font: {
+        family: $secondary-font-family;
+    }
+    color: $primary;
 }
 
 h1, h2, h3, h4, h5, h6 {

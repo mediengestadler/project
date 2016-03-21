@@ -8,7 +8,7 @@ html, body {
     }
     font: {
         family: $primary-font-family;
-        size: (100% / 16 * $global-font-size);
+        size: (100 / 16 * $global-font-size);
     }
     color: $text-color;
 }
