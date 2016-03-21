@@ -1,0 +1,9 @@
+@function space ($space, $remcalc: true) {
+    $space: index($spaces, $space);
+
+    @if function-exists(rem-calc) and $remcalc == true {
+        $space: rem-calc($space);
+    }
+
+    @return $space;
+}

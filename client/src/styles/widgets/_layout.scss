@@ -3,7 +3,14 @@
 }
 
 html, body {
-
+    line: {
+        height: 1.5;
+    }
+    font: {
+        family: $primary-font-family;
+        size: (100% / 16 * $global-font-size);
+    }
+    color: $text-color;
 }
 
 

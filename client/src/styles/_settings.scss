@@ -28,6 +28,13 @@ $grid-column-responsive-gutter: (
   medium: 32px
 );
 
+// spaces
+$spaces: (
+    s: 8px,
+    m: 16px,
+    l: 32px
+);
+
 // fonts
 $primary-font-family: "Open Sans", Arial, sans-serif;
 $secondary-font-family: "Shadows into Light", "Times New Roman", sans-serif;
@@ -35,6 +42,7 @@ $secondary-font-family: "Shadows into Light", "Times New Roman", sans-serif;
 // colors
 $primary: #fe6d3e;
 $secondary: #38c8e0;
+$text-color: #666666;
 
 // misc
 $transition: 0.32s ease-in-out;

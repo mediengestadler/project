@@ -1,5 +1,17 @@
 %a {
+    // http://tympanus.net/Development/CreativeLinkEffects/
+    text: {
+        decoration: none;
+    }
+    color: $primary;
 
+    &:before {
+
+    }
+
+    &:hover {
+
+    }
 }
 
 a {
@@ -29,7 +41,10 @@ a {
 }
 
 %p {
-
+    margin: {
+        top: space(m);
+        bottom: space(m);
+    }
 }
 
 p {
@@ -49,7 +64,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 %h1 {
-
+    line: {
+        height: 1.2;
+    }
 }
 
 h1 {
